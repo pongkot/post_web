@@ -20,6 +20,12 @@
       "type": "shell",
       "command": "${fileWorkspaceFolder}/.venv/Scripts/Activate.ps1 && python manage.py makemigrations",
       "problemMatcher": []
+    },
+    {
+      "label": "format",
+      "type": "shell",
+      "command": "${fileWorkspaceFolder}/.venv/Scripts/Activate.ps1 && black .",
+      "problemMatcher": []
     }
   ]
 }
