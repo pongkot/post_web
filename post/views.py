@@ -1,4 +1,4 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from .models import Post
 
@@ -9,6 +9,17 @@ class PostListView(ListView):
     template_name = "post_list.html"
 
     def get_context_data(self):
+        context = super().get_context_data()
+        context["name"] = "post_list"
+        return context
+
+
+class PostDetailView(DetailView):
+    model = Post
+    context_object_name = "post"
+    template_name = "post_detail.html"
+
+    def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context["name"] = "post_list"
         return context

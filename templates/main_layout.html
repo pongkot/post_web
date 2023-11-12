@@ -39,7 +39,8 @@
                     <a class="nav-link" href="{% url 'index' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if name == 'post_list' %}active{% endif %}" href="{% url 'post_list' %}">Archive</a>
+                    <a class="nav-link {% if name == 'post_list' or name == 'post_detail' %}active{% endif %}"
+                       href="{% url 'post_list' %}">Archive</a>
                 </li>
             </ul>
         </div>

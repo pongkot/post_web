@@ -1,0 +1,9 @@
+{% extends 'main_layout.html' %}
+{% block content %}
+    <h1 class="my-3">
+        {{ post.title }}
+    </h1>
+    <p><i class="bi bi-person-fill"></i> {{ post.author }} <i class="bi bi-calendar-event"></i> {{ post.created_at }} <i
+            class="bi bi-star-fill"></i> 3 stars</p>
+    <p>{{ post.body|safe }}</p>
+{% endblock %}
