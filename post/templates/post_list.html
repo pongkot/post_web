@@ -1,13 +1,25 @@
-{% extends 'main_layout.html' %} {% block content %} {% for post in posts %}
-<div class="card my-3">
-  <div class="card-body">
-    <h5 class="card-title">{{ post.title }}</h5>
-    <p class="card-text">
-      {{ post.body|slice:":144" }}
-      <a href="#">Read More</a>
-    </p>
-    <a href="#" class="card-link">Edit</a>
-    <a href="#" class="card-link">Delete</a>
-  </div>
-</div>
-{% endfor %} {% endblock %}
+{% extends 'main_layout.html' %}
+{% block content %}
+    {% for post in posts %}
+        <div class="card my-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">
+                    {{ post.body|slice:":256" }}
+                    <a href="#">Read More</a>
+                </p>
+            </div>
+            <div class="card-body">
+                <div class="float-start"><i class="bi bi-person-fill"></i> {{ post.author }}</div>
+                <div class="float-start mx-2"><i class="bi bi-calendar-event"></i> {{ post.created_at }}</div>
+                <div class="float-start"><i class="bi bi-star-fill"></i> 3 star</div>
+                <div class="float-end">
+                    <a href="#" title="Delete"><i class="bi bi-trash"></i></a>
+                </div>
+                <div class="float-end" style="margin-right: 2px;">
+                    <a href="#" title="Edit"><i class="bi bi-pencil-square"></i></a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
