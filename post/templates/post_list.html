@@ -10,15 +10,17 @@
                 </p>
             </div>
             <div class="card-body">
-                <div class="float-start"><i class="bi bi-person-fill"></i> {{ post.author }}</div>
+                <div class="float-start"><i class="bi bi-person"></i> {{ post.author }}</div>
                 <div class="float-start mx-2"><i class="bi bi-calendar-event"></i> {{ post.created_at }}</div>
-                <div class="float-start mx-2"><i class="bi bi-chat-left-text"></i> 10 comments</div>
-                <div class="float-start"><i class="bi bi-star-fill"></i> 3 stars</div>
+                <div class="float-start mx-2"><i class="bi bi-chat-left-text"></i> {{ post.post_comment.count }}
+                    comments
+                </div>
+                <div class="float-start"><i class="bi bi-star"></i> 5 stars</div>
                 <div class="float-end">
                     <a href="#" title="Delete"><i class="bi bi-trash"></i></a>
                 </div>
                 <div class="float-end" style="margin-right: 2px;">
-                    <a href="#" title="Edit"><i class="bi bi-pencil-square"></i></a>
+                    <a href="{% url 'post_update' post.id %}" title="Edit"><i class="bi bi-pencil-square"></i></a>
                 </div>
             </div>
         </div>
