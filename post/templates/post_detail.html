@@ -6,4 +6,11 @@
         <i class="bi bi-calendar-event"></i> {{ post.created_at }}
         <i class="bi bi-star"></i> 3 stars</p>
     <p>{{ post.body|safe }}</p>
+    <h4 class="mt-5">Comments</h4>
+    {% for comment in post.post_comment.all %}
+        <div>
+            <p>{{ comment.date_created }} · {{ comment.user_rating }} stars</p>
+            <p>{{ comment.comment_text }}</p>
+        </div>
+    {% endfor %}
 {% endblock %}
