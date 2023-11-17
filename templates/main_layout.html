@@ -19,22 +19,22 @@
         .header {
             float: left;
         }
+
+        .header a {
+            color: black;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="row">
         <div class="col-8 m-auto pt-3">
-            <div style="display: inline-block">
+            <div class="p-5 mb-4 bg-body-tertiary rounded-3">
                 <img class="logo" src="{% static 'django_logo.png' %}" width="48"/>
                 <h1 class="header"><a href="{% url 'index' %}">Django blogs</a></h1>
+                <br><br><br>
             </div>
-            <p>
-                Django is a high-level Python web framework that enables rapid
-                development of secure and maintainable websites. It follows the
-                Model-View-Controller (MVC) architectural pattern and emphasizes the
-                principle of DRY (Don’t Repeat Yourself).
-            </p>
             <ul class="nav nav-underline">
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'index' %}">Home</a>
