@@ -4,13 +4,17 @@
     <p>
         <i class="bi bi-person"></i> {{ post.author }}
         <i class="bi bi-calendar-event"></i> {{ post.created_at }}
-        <i class="bi bi-star"></i> 3 stars</p>
+        <i class="bi bi-star"></i> {{ user_star }} stars</p>
     <p>{{ post.body|safe }}</p>
     <h4 class="mt-5">Comments</h4>
-    {% for comment in post.post_comment.all %}
-        <div>
-            <p>{{ comment.date_created }} · {{ comment.user_rating }} stars</p>
-            <p>{{ comment.comment_text }}</p>
-        </div>
-    {% endfor %}
+    {% if post.post_comment|length > 0 %}
+        {% for comment in post.post_comment.all %}
+            <div>
+                <p>{{ comment.date_created }} · {{ comment.user_rating }} stars</p>
+                <p>{{ comment.comment_text }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="text-center">No Comment</p>
+    {% endif %}
 {% endblock %}
