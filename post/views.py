@@ -1,4 +1,11 @@
-from django.views.generic import ListView, DetailView, UpdateView, CreateView
+from django.urls import reverse_lazy
+from django.views.generic import (
+    ListView,
+    DetailView,
+    UpdateView,
+    CreateView,
+    DeleteView,
+)
 
 from .models import Post
 
@@ -46,3 +53,9 @@ class PostCreateView(CreateView):
         context = super().get_context_data()
         context["name"] = "post_create"
         return context
+
+
+class PostDeleteView(DeleteView):
+    model = Post
+    template_name = "post_delete.html"
+    success_url = reverse_lazy("post_list")

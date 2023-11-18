@@ -18,7 +18,7 @@
                 </div>
                 <div class="float-start"><i class="bi bi-star"></i> {{ post.stars }} stars</div>
                 <div class="float-end">
-                    <a href="#" title="Delete"><i class="bi bi-trash"></i></a>
+                    <a href="{% url 'post_delete' post.id %}" title="Delete"><i class="bi bi-trash"></i></a>
                 </div>
                 <div class="float-end" style="margin-right: 2px;">
                     <a href="{% url 'post_update' post.id %}" title="Edit"><i class="bi bi-pencil-square"></i></a>
