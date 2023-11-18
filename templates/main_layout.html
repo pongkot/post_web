@@ -42,6 +42,10 @@
                     <a class="nav-link" href="{% url 'index' %}">Home</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link {% if name == 'post_create' %}active{% endif %}"
+                       href="{% url 'post_create' %}">New</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link {% if name == 'post_list' or name == 'post_detail' or name == 'post_update' %}active{% endif %}"
                        href="{% url 'post_list' %}">Archive</a>
                 </li>

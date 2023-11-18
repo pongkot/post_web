@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView, UpdateView
+from django.views.generic import ListView, DetailView, UpdateView, CreateView
 
 from .models import Post
 
@@ -34,4 +34,15 @@ class PostUpdateView(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context["name"] = "post_update"
+        return context
+
+
+class PostCreateView(CreateView):
+    model = Post
+    template_name = "post_create.html"
+    fields = ["title", "author", "body"]
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context["name"] = "post_create"
         return context
