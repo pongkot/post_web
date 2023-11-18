@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView, UpdateView
 
-from .models import Post, Comment
+from .models import Post
 
 
 class PostListView(ListView):
@@ -21,17 +21,7 @@ class PostDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
-        commented_post_id = self.kwargs["pk"]
-        comments = Comment.objects.filter(commented_post_id=commented_post_id)
-        avg_user_star = 0
-        if len(comments) > 0:
-            total_comment = len(comments)
-            total_user_star = 0
-            for comment in comments:
-                total_user_star += comment.user_rating
-            avg_user_star = total_user_star // total_comment
         context["name"] = "post_list"
-        context["user_star"] = avg_user_star
         return context
 
 

@@ -17,6 +17,17 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse("post_update", args=[str(self.id)])
 
+    def stars(self):
+        comments = self.post_comment.all()
+        sum_user_star = 0
+        total_user_stars = len(comments)
+        if total_user_stars > 0:
+            for comment in comments:
+                sum_user_star += comment.user_rating
+            return sum_user_star // total_user_stars
+        else:
+            return 0
+
 
 class Comment(models.Model):
     comment_text = models.CharField(max_length=100)

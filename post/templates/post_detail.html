@@ -4,17 +4,40 @@
     <p>
         <i class="bi bi-person"></i> {{ post.author }}
         <i class="bi bi-calendar-event"></i> {{ post.created_at }}
-        <i class="bi bi-star"></i> {{ user_star }} stars</p>
+        <i class="bi bi-star"></i> {{ post.stars }} stars</p>
     <p>{{ post.body|safe }}</p>
     <h4 class="mt-5">Comments</h4>
-    {% if post.post_comment|length > 0 %}
-        {% for comment in post.post_comment.all %}
-            <div>
-                <p>{{ comment.date_created }} · {{ comment.user_rating }} stars</p>
-                <p>{{ comment.comment_text }}</p>
+    <div class="row g-3">
+        <div class="col">
+            <textarea class="form-control" name="" id="" rows="2"></textarea>
+        </div>
+    </div>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="row g-3 pt-2">
+            <div class="col-1">
+                <input type="submit" value="Post" class="btn btn-outline-primary" required>
             </div>
-        {% endfor %}
-    {% else %}
-        <p class="text-center p-2">No Comment</p>
-    {% endif %}
+            <div class="col-3">
+                <select name="user_star" class="form-control" style="border: 0">
+                    <option selected>Vote...</option>
+                    <option value="1">⭐</option>
+                    <option value="2">⭐⭐</option>
+                    <option value="3">⭐⭐⭐</option>
+                    <option value="4">⭐⭐⭐⭐</option>
+                    <option value="5">⭐⭐⭐⭐⭐</option>
+                </select>
+            </div>
+        </div>
+    </form>
+    {% for comment in post.post_comment.all %}
+        <div>
+            <p>{{ comment.date_created }} · {{ comment.user_rating }} stars</p>
+            <p>{{ comment.comment_text }}</p>
+        </div>
+    {% empty %}
+        <div>
+            <p class="pt-3 text-center">No Comment</p>
+        </div>
+    {% endfor %}
 {% endblock %}

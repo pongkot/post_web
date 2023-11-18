@@ -3,9 +3,10 @@
     {% for post in posts %}
         <div class="card my-3">
             <div class="card-body">
-                <h5 class="card-title">{{ post.title }}</h5>
+                <h5 class="card-title"><a style="color: black; text-decoration: none;"
+                                          href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h5>
                 <p class="card-text">
-                    {{ post.body|slice:":256" }}
+                    {{ post.body|slice:":256" }}...
                     <a href="{% url 'post_detail' post.id %}">Read More</a>
                 </p>
             </div>
@@ -15,7 +16,7 @@
                 <div class="float-start mx-2"><i class="bi bi-chat-left-text"></i> {{ post.post_comment.count }}
                     comments
                 </div>
-                <div class="float-start"><i class="bi bi-star"></i> 5 stars</div>
+                <div class="float-start"><i class="bi bi-star"></i> {{ post.stars }} stars</div>
                 <div class="float-end">
                     <a href="#" title="Delete"><i class="bi bi-trash"></i></a>
                 </div>
@@ -23,6 +24,11 @@
                     <a href="{% url 'post_update' post.id %}" title="Edit"><i class="bi bi-pencil-square"></i></a>
                 </div>
             </div>
+        </div>
+        <div class="fixed-bottom d-flex justify-content-end" style="right: 12rem; bottom: 10px;">
+            <a href="#" class="btn btn-primary" title="New Blog">
+                <i class=" bi bi-plus-lg" style="font-size: 28px"></i>
+            </a>
         </div>
     {% endfor %}
 {% endblock %}
